@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>PakePlus</title>
-    </head>
-    <body>
-        Hello World
-    </body>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+<title>智慧校巴</title>
+<link rel="stylesheet" href="css/app.css">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#1a73e8">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="智慧校巴">
+</head>
+<body>
+
+<!-- 登录页 -->
+<div id="pageLogin" class="page active">
+  <div class="login-bg" style="display:flex;flex-direction:column;align-items:center;justify-content:center;height:100vh;padding:40px 32px;background:linear-gradient(160deg,#1a73e8,#0d47a1)">
+    <div style="font-size:64px;margin-bottom:8px">🚌</div>
+    <h1 style="color:#fff;font-size:28px;font-weight:700">智慧校巴</h1>
+    <p style="color:rgba(255,255,255,.7);font-size:14px;margin-bottom:36px">跟车老师终端</p>
+    <form onsubmit="doLogin(event)" style="width:100%;max-width:320px">
+      <div style="display:flex;align-items:center;background:rgba(255,255,255,.15);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+        <span style="font-size:18px;margin-right:10px">👤</span>
+        <input id="fPhone" type="text" placeholder="手机号 / 账号" required style="background:none;border:none;outline:none;color:#fff;font-size:16px;flex:1">
+      </div>
+      <div style="display:flex;align-items:center;background:rgba(255,255,255,.15);border-radius:12px;padding:14px 16px;margin-bottom:14px">
+        <span style="font-size:18px;margin-right:10px">🔒</span>
+        <input id="fPwd" type="password" placeholder="密码" required style="background:none;border:none;outline:none;color:#fff;font-size:16px;flex:1">
+      </div>
+      <button type="submit" style="width:100%;padding:15px;background:#fff;color:#1a73e8;border:none;border-radius:12px;font-size:17px;font-weight:700;cursor:pointer">登 录</button>
+    </form>
+  </div>
+</div>
+
+<!-- 班次选择弹窗 -->
+<div id="shiftModal" class="modal" style="display:none">
+  <div class="modal-box">
+    <div class="modal-hd">📋 选择班次</div>
+    <p style="font-size:13px;color:#888;margin-bottom:16px">请选择本次执行的车队班次</p>
+    <div id="shiftItems"></div>
+  </div>
+</div>
+
+<!-- 主界面（全屏，内容由JS渲染） -->
+<div id="pageMain" class="page">
+  <div id="content" style="flex:1;overflow:hidden"></div>
+</div>
+
+<div id="toast"></div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/pages.js"></script>
+</body>
 </html>
